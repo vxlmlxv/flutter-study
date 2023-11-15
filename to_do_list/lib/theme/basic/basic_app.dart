@@ -50,10 +50,11 @@ class BasicAppState extends State<BasicApp> {
           setState(() {
             _selectedIndex = index;
           });
+          // print('Selected index: $index');
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.apps),
+            icon: Icon(Icons.view_kanban),
             label: 'Week',
           ),
           BottomNavigationBarItem(
@@ -68,4 +69,41 @@ class BasicAppState extends State<BasicApp> {
       ),
     );
   }
+}
+
+Widget menuComponent(String title, String content) {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        height: 50,
+        child: Row(children: [
+          Text(title),
+          Text(content),
+        ])),
+  );
+}
+
+Widget menuMonth() {
+  return const Text('Month');
+}
+
+Widget menuList() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      menuComponent("title1", "content1"),
+      menuComponent("title2", "content2"),
+      menuComponent("title3", "content3"),
+      menuComponent("test", "content4"),
+    ],
+  );
+}
+
+Widget menuWeek() {
+  return const Text('Week');
 }
